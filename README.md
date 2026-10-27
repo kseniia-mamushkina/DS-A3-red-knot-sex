@@ -130,7 +130,7 @@ The notebook was developed in Google Colab.
 
 The CSV must be uploaded again when a new Colab runtime is started. It is not embedded in the notebook.
 
-The notebook reads the source CSV from runtime storage. The `data/` folder in this repository preserves the source file for download.
+The notebook reads the source CSV from runtime storage. The original CSV is stored in the repository root for download.
 
 ### Environment
 
@@ -156,7 +156,7 @@ SHA-256 of the original CSV:
 
 The source CSV was preserved unchanged. Cleaning and individual selection were performed in code.
 
-The saved split manifest is available at `results/tables/split_manifest.csv`.
+The saved split manifest is available at `tables/split_manifest.csv`.
 
 ## AI assistance
 
