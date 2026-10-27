@@ -42,9 +42,9 @@ The analytical sample contains **2,130 unique birds**: 1,263 females and 867 mal
 |---|---|
 | `DS_A3_red_knot_sex.ipynb` | Analysis code, outputs, and interpretation |
 | `DS_A3_Report.pdf` | Written report |
-| `data/14._adults_Mauritania.csv` | Original source data |
-| `results/tables/` | Exported comparisons, predictions, diagnostics, and split manifest |
-| `results/figures/` | Residual diagnostic and learning curve figures |
+| `14._adults_Mauritania.csv` | Original source data |
+| `tables/` | Exported comparisons, predictions, diagnostics, and split manifest |
+| `figures/` | Residual diagnostic and learning curve figures |
 | `requirements.txt` | Recorded Python package versions |
 | `AI_USE_LOG.md` | Disclosure of AI assistance and verification |
 | `README.md` | Project overview and reproduction instructions |
