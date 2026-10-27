@@ -1,0 +1,5 @@
+Model,Selected C (outer folds)
+Ridge: Wing + Bill,"[0.1, 10, 1, 1, 100]"
+Lasso: Wing + Bill,"[0.1, 0.1, 1, 1, 100]"
+Ridge: Wing + Bill + Tarsus,"[0.1, 1, 1, 10, 1]"
+Lasso: Wing + Bill + Tarsus,"[0.1, 10, 0.1, 10, 1]"
