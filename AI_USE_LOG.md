@@ -1,45 +1,52 @@
 # AI Use and Verification Log
 
-**Assignment:** DS-A3 — Regression Baseline and Diagnostics  
+**Assignment:** DS-A4 — Model Comparison and Calibration Lab  
 **Author:** Kseniia Mamushkina  
-**AI tool:** ChatGPT, GPT-6.1 Sol, OpenAI
+**Student ID:** 2026A8010351001  
+**AI tool:** ChatGPT  
 
 ## Scope of AI assistance
 
-ChatGPT generated draft Python code for data checks, sample preparation, splitting, baseline models, cross-validation, regularization tuning, diagnostics, and final test evaluation.
+ChatGPT assisted with drafting Python code and notebook text, explaining statistical concepts, troubleshooting, and preparing the PDF report.
 
-AI assistance also included explanations of statistical concepts, preparation of the PDF report, and review of the completed notebook. 
-
-The author ran the analysis blocks in Google Colab, examined the outputs, and discussed methodological choices and interpretations.
+The author executed the analysis in Google Colab, inspected outputs and discussed their interpretation. Numerical results were obtained through code execution using the original dataset.
 
 ## Accepted suggestions
 
-- Retain the earliest recorded capture per bird to obtain one observation per individual.
-- Use a stratified 80:20 training/test split and identical cross-validation folds across candidates.
-- Place standardization inside each Pipeline and tune regularization within inner cross-validation.
-- Report balanced accuracy alongside accuracy and examine recall separately for each sex.
-- Retain the unregularized Wing + Bill model because additional predictors and regularization provided negligible observed gains.
+- Reuse the DS-A3 dataset and documented cleaning rules.
+- Compare logistic regression, random forest and gradient boosting using the same three predictors.
+- Use shared five-fold outer and three-fold inner stratified cross-validation.
+- Allocate six hyperparameter configurations to each model family.
+- Examine hypothetical error costs and verification-capacity constraints.
 
-## Suggestions revised or rejected
-
-- The initial proposal to examine regularization only with all three predictors was revised.
-- Ridge and lasso were evaluated for both Wing + Bill and Wing + Bill + Tarsus.
+The reference costs—FP = 1 and FN = 2—and 40% verification capacity are illustrative assumptions suggested during planning, not measured project costs.
 
 ## Verification performed
 
-1. **Author execution:** The author executed the analysis blocks in Colab and supplied their outputs for comparison.
-2. **Separate AI-assisted execution:** The 15 analysis code cells in the reviewed notebook snapshot were executed sequentially in a separate runtime using the same CSV. Only filesystem paths were adapted.
-3. **Version comparison:** The notebook recorded scikit-learn 1.6.1; the separate review used 1.8.0. The substantive numerical tables matched at the displayed precision.
-4. **Data and leakage checks:** Verification confirmed 2,130 analytical individuals, a 1,704/426 training/test split, and no overlapping ring identifiers.
-5. **Final results:** The reproduced test confusion matrix contained 107 correctly classified males and 207 correctly classified females, with 66 and 46 errors respectively. Test accuracy was 73.71% and balanced accuracy was 71.83%.
-6. **Provenance:** The description of the adult dataset, DNA-based reference sex, and measurement units was checked against the Dryad metadata: https://doi.org/10.5061/dryad.3n5tb2rqb.
+### Author execution
 
-This verification checks execution and reproducibility. It is not an independently written implementation or an external statistical audit.
+The author ran the notebook in Colab and inspected the resulting tables, figures and warnings.
 
-## Negative findings and data integrity
+Programmatic checks included:
 
-The report retains the negligible gains from additional complexity, lower test performance than cross-validation estimates, poorer male recall, and confident classification errors.
+- source-file SHA-256 verification;
+- schema, missing-value and reference-sex checks;
+- exclusion tracking and unique individual identifiers;
+- separation of training and validation individuals;
+- complete, valid outer-fold probabilities;
+- consistent calibration-bin and ECE calculations;
+- reproduction of the reference scenario within sensitivity analysis.
 
-Observations were not removed merely because predictions disagreed with reference sex. Case deletion was used only for sensitivity analysis. Test results were reported without subsequent model retuning.
+### Separate AI-assisted reproduction
 
-The original CSV was preserved unchanged. No synthetic or AI-generated observations were introduced.
+A separate execution environment reran all 19 code cells in the reviewed notebook copy, using scikit-learn 1.6.1 and adapting input/output paths.
+
+All cells completed successfully. Thirteen saved numerical tables matched the reproduced results at their displayed precision. The finalized logistic-regression setting, `C = 0.1`, and threshold, `0.71`, were also reproduced.
+
+The recorded SciPy warnings concerning deprecated `disp` and `iprint` output-control options were inspected. They were not convergence warnings.
+
+## Verification limits
+
+Bootstrap intervals are conditional on the existing predictions and do not include model refitting. Subgroup diagnostics are exploratory. Previously examined DS-A3 data were reused, and the finalized model and threshold have not been externally validated.
+
+AI assistance does not replace the author’s responsibility for the submitted analysis and its interpretation.
